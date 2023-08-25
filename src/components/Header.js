@@ -6,6 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Link from "@material-ui/core/Link";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -58,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
     },
     drawer: {
         color: 'ADD8E6',
+    },
+    buttonGroup: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+
     }
 
 }));
@@ -86,8 +93,14 @@ export default function Header() {
                     <h1 className={classes.title}>
                         Explore Your City Like <br /> <span className={classes.colorText}>Never Before</span>
                     </h1>
-                        <Button className={classes.launchApp} variant="contained">Launch App</Button>
-                        <Button className={classes.readMore} variant="contained">Read More</Button>
+                    <div className={classes.buttonGroup}>
+                        <li><a href="/map">
+                            <Button className={classes.launchApp} variant="contained">Launch App</Button>
+                        </a></li>
+                        <li><a href="/readmore">
+                            <Button className={classes.readMore} variant="contained">Read More</Button>
+                        </a></li>
+                    </div>
                 </div>
             </Collapse>
             <SwipeableDrawer
@@ -110,34 +123,19 @@ export default function Header() {
                 <Divider />
                     <List>
                         <ListItem>
-                        {/* <Link
-                            color="textPrimary"
-                            variant="button"
-                            underline="none"
-                            href='#home'
-                        >
-                            Home
-                        </Link>
-                        </ListItem>                        
-                        <ListItem>
-                        <Link
-                            color="textPrimary"
-                            variant="button"
-                            underline="none"
-                            href='#map'
-                        >
-                            Launch Map
-                        </Link>
+                            <Link href="/" color="#000080" variant="button" underline="none">
+                                Home
+                            </Link>
                         </ListItem>
                         <ListItem>
-                        <Link
-                            color="textPrimary"
-                            variant="button"
-                            underline="none"
-                            href='#home'
-                        >
-                            Read More
-                        </Link> */}
+                        <Link href="/map" color="#000080" variant="button" underline="none">
+                                Launch Map
+                            </Link>
+                        </ListItem>
+                        <ListItem>
+                        <Link href="/readmore" color="#000080" variant="button" underline="none">
+                                Read More
+                            </Link>
                         </ListItem>
                     </List>
             </SwipeableDrawer>

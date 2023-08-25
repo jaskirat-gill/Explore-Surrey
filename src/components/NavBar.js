@@ -6,7 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -81,34 +81,19 @@ export default function NavBar() {
                 <Divider />
                     <List>
                         <ListItem>
-                        {/* <Link
-                            color="textPrimary"
-                            variant="button"
-                            underline="none"
-                            href='#home'
-                        >
-                            Home
-                        </Link>
-                        </ListItem>                        
-                        <ListItem>
-                        <Link
-                            color="textPrimary"
-                            variant="button"
-                            underline="none"
-                            href='#map'
-                        >
-                            Launch Map
-                        </Link>
+                            <Link href="/" color="#000080" variant="button" underline="none">
+                                Home
+                            </Link>
                         </ListItem>
                         <ListItem>
-                        <Link
-                            color="textPrimary"
-                            variant="button"
-                            underline="none"
-                            href='#home'
-                        >
-                            Read More
-                        </Link> */}
+                        <Link href="/map" color="#000080" variant="button" underline="none">
+                                Launch Map
+                            </Link>
+                        </ListItem>
+                        <ListItem>
+                        <Link href="/readmore" color="#000080" variant="button" underline="none">
+                                Read More
+                            </Link>
                         </ListItem>
                     </List>
             </SwipeableDrawer>

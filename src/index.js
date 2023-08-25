@@ -8,6 +8,8 @@ import {
 import reportWebVitals from './reportWebVitals';
 import App from './routes/App';
 import ErrorPage from './routes/ErrorPage';
+import ReadMore from './routes/ReadMore';
+import Map from './routes/Map';
 
 
 const router = createBrowserRouter([
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage /> 
+  },
+  {
+    path: "/readmore",
+    element: <ReadMore />,
+  },
+  {
+    path: "/map",
+    element: <Map />,
   },
 ]);
 
