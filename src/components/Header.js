@@ -65,7 +65,13 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
 
-    }
+    },
+    whiteText: {
+        color: "#fff"
+    },
+    paper: {
+        background: '#0e1111',
+    },
 
 }));
 export default function Header() {
@@ -95,7 +101,7 @@ export default function Header() {
                     </h1>
                     <div className={classes.buttonGroup}>
                         <li><a href="/map">
-                            <Button className={classes.launchApp} variant="contained">Launch App</Button>
+                            <Button className={classes.launchApp} variant="contained">Launch Map</Button>
                         </a></li>
                         <li><a href="/readmore">
                             <Button className={classes.readMore} variant="contained">Read More</Button>
@@ -104,7 +110,7 @@ export default function Header() {
                 </div>
             </Collapse>
             <SwipeableDrawer
-                className={classes.drawer}
+                classes={{ paper: classes.paper }}
                 anchor="right"
                 open={drawerOpen}
                 onOpen={() => setDrawerOpen(true)}
@@ -117,23 +123,23 @@ export default function Header() {
                     tabIndex={0}
                 >
                     <IconButton>
-                        <ChevronLeftIcon />
+                        <ChevronLeftIcon className={classes.icon}/>
                     </IconButton>
                 </div>
                 <Divider />
                     <List>
                         <ListItem>
-                            <Link href="/" color="#000080" variant="button" underline="none">
+                            <Link className={classes.whiteText} href="/" color="#000080" variant="button" underline="none">
                                 Home
                             </Link>
                         </ListItem>
                         <ListItem>
-                        <Link href="/map" color="#000080" variant="button" underline="none">
+                        <Link className={classes.whiteText} href="/map" color="#000080" variant="button" underline="none">
                                 Launch Map
                             </Link>
                         </ListItem>
                         <ListItem>
-                        <Link href="/readmore" color="#000080" variant="button" underline="none">
+                        <Link className={classes.whiteText} href="/readmore" color="#000080" variant="button" underline="none">
                                 Read More
                             </Link>
                         </ListItem>

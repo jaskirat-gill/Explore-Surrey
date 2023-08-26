@@ -5,6 +5,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import 'mapbox-gl/dist/mapbox-gl.css';
 import reportWebVitals from './reportWebVitals';
 import App from './routes/App';
 import ErrorPage from './routes/ErrorPage';

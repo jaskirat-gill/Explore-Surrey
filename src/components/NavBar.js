@@ -42,7 +42,13 @@ const useStyles = makeStyles((theme) => ({
     },
     drawer: {
         color: 'ADD8E6',
-    }
+    },
+    paper: {
+        background: '#0e1111',
+    },
+    whiteText: {
+        color: "#fff"
+    },
 
 }));
 export default function NavBar() {
@@ -62,7 +68,7 @@ export default function NavBar() {
                 </Toolbar>
             </AppBar>
             <SwipeableDrawer
-                className={classes.drawer}
+                classes={{ paper: classes.paper }}
                 anchor="right"
                 open={drawerOpen}
                 onOpen={() => setDrawerOpen(true)}
@@ -75,23 +81,23 @@ export default function NavBar() {
                     tabIndex={0}
                 >
                     <IconButton>
-                        <ChevronLeftIcon />
+                        <ChevronLeftIcon className={classes.icon}/>
                     </IconButton>
                 </div>
                 <Divider />
                     <List>
                         <ListItem>
-                            <Link href="/" color="#000080" variant="button" underline="none">
+                            <Link className={classes.whiteText} href="/" color="#fff" variant="button" underline="none">
                                 Home
                             </Link>
                         </ListItem>
                         <ListItem>
-                        <Link href="/map" color="#000080" variant="button" underline="none">
+                        <Link className={classes.whiteText} href="/map" color="#fff" variant="button" underline="none">
                                 Launch Map
                             </Link>
                         </ListItem>
                         <ListItem>
-                        <Link href="/readmore" color="#000080" variant="button" underline="none">
+                        <Link className={classes.whiteText} href="/readmore" color="#fff" variant="button" underline="none">
                                 Read More
                             </Link>
                         </ListItem>
