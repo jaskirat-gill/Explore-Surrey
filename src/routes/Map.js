@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useRef, useEffect, useState } from "react";
-import { makeStyles, IconButton, TextField} from "@material-ui/core";
+import { makeStyles, IconButton, TextField, FormGroup, FormControlLabel, Checkbox} from "@material-ui/core";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import SortIcon from "@material-ui/icons/Sort";
@@ -11,6 +11,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Link from "@material-ui/core/Link";
 import markerImage from "../data/location_on.png";
+import { CheckBox } from "@material-ui/icons";
+import { withStyles } from "@material-ui/core/styles";
 
 const ACCESS_TOKEN = "pk.eyJ1IjoiamFza2lyYXRnaWxsIiwiYSI6ImNsbHIxNzI2cTBpaDYza3Bpa2I4bzBscXIifQ.HAjkQehYOYn8egTsxUzSlg";
 mapboxgl.accessToken = ACCESS_TOKEN;
@@ -84,8 +86,25 @@ const useStyles = makeStyles((theme) => ({
     },  
     trafficPopup: {
         backgroundColor: '#000080',
+    },
+    settings: {
+        color: '#fff',
+        fontFamily: 'Nunito',
+        color: '#fff',
+    },
+    checkBox: {
+        color: '#fff',
     }
 }));
+const CustomColorCheckbox = withStyles({
+    root: {
+      color: "#fff",
+      "&$checked": {
+        color: "#000080"
+      }
+    },
+    checked: {}
+  })((props) => <Checkbox color="default" {...props} />);
 
 
 
@@ -97,11 +116,12 @@ export default function Map() {
     const [lat, setLat] = useState(49.02601641506996);
     const [zoom] = useState(9);
     const [drawerOpen, setDrawerOpen] = useState(false);
+    let clickedLayer = '';
     const bounds = [ 
         [-122.91358722490305, 49.00663583762119], //Bottom Left Corner
         [-122.5948945381644, 49.251293876628665], //Top Right Corner
         ];
- 
+    
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: mapContainer.current,
@@ -130,12 +150,14 @@ export default function Map() {
                         'type': 'symbol',
                         'source': 'trafficCameras',
                         'layout': {
+                            'visibility': 'visible',
                             'icon-image': 'custom-marker',
                             'icon-size': 1,
                         }
                     });
                 }
             );
+            
         });
         // When a click event occurs on a feature in the places layer, open a popup at the
         // location of the feature, with description HTML from its properties.
@@ -154,25 +176,23 @@ export default function Map() {
                 .setLngLat(coordinates)
                 .setHTML('<h3><a href="' + e.features[0].properties.IMAGE + '" target="_blank">' + e.features[0].properties.LOCATION + '</a></h3>')
                 .addTo(map);
-            });
+        });
             
             // Change the cursor to a pointer when the mouse is over the places layer.
-            map.on('mouseenter', 'trafficCameraLayer', () => {
-                map.getCanvas().style.cursor = 'pointer';
-            });
+        map.on('mouseenter', 'trafficCameraLayer', () => {
+            map.getCanvas().style.cursor = 'pointer';
+        });
             
             // Change it back to a pointer when it leaves.
-            map.on('mouseleave', 'trafficCameraLayer', () => {
-                map.getCanvas().style.cursor = '';
-            });
+        map.on('mouseleave', 'trafficCameraLayer', () => {
+            map.getCanvas().style.cursor = '';
         });
-    
-    
+        
+    });
 
     return (
         <div className={classes.root}>
             <div className={classes.map}  ref={mapContainer} >
-                {/* {places && map && <Markers map={map} places={places} className={classes.markers}/>} */}
             </div>
             <div className={classes.sideBar}>
                 <h1 className={classes.sidebarTitle}> 
@@ -188,6 +208,10 @@ export default function Map() {
                             InputLabelProps={{className: classes.textField__label}}
                             InputProps={{className: classes.TextField_color}}
                 />
+                <h2 className={classes.settings}>Settings</h2>
+                <FormGroup>
+                    <FormControlLabel control={<CustomColorCheckbox defaultChecked />} label="Traffic Cameras" className={classes.checkBox}/>
+                </FormGroup>
             </div>
             <SwipeableDrawer
                 classes={{ paper: classes.paper }}
