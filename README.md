@@ -1,7 +1,41 @@
-# Getting Started with Create React App
+# Explore Surrey
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Explore Surrey is a one stop site to visually view data from Surrey's Open Data program.
 
+Current Features:
+- Live Traffic Camera Stills
+- Restaurants
+- Fraser Health Restaurant Inspection Results
+- Speed Control Measures (Speed Bumps, Traffic Circles, Raised Crossings)
+
+Planned Features:
+- Crime Reports (Criminal & Auto Theft)
+- Active Traffic Obstructions (Live Special Events & Construction)
+- Speed & Red Light Cameras 
+- Median Statistics For Neighbourhood (Income/Crime/Home Price)
+- School Statistics (Enrollment/Grad Rate)
+- Lobbying Registry (Definition: advocates that work to influence political decisions on behalf of individuals and organizations)
+- Active Business Licenses (Commercial & Industrial)
+- Alternate Charging (Electric, Hydrogen)
+- Pay Parking
+- Places Of Interest
+- Public Washrooms
+- Traffic Signals
+- Subdivision Markers
+- Park Structures (Benches, Gates, Shelters, Tables)
+- City Financial Plans & Reports
+- Council Expense Reports
+- Building Inventory (Commerical/Industrial/Residential)
+- Casualty Collision Rate
+- Capital Construction
+- Schools
+- (Maybe) Historical Imaging (1990-Current)
+- (Maybe) Real Time Transit
+
+App features:
+- Home page to direct visitors
+- Read more page describing the project
+- Map page to view data
 ## Available Scripts
 
 In the project directory, you can run:
@@ -39,32 +73,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
