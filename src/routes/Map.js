@@ -1,8 +1,9 @@
 /* eslint-disable */
 import React, { useRef, useEffect, useState } from "react";
-import { makeStyles, IconButton, TextField, FormGroup, FormControlLabel, Checkbox, withStyles, Divider, SwipeableDrawer, ListItem, Link, List} from "@material-ui/core";
+import { makeStyles, IconButton, ButtonGroup, FormGroup, FormControlLabel, Checkbox, withStyles, Divider, SwipeableDrawer, ListItem, Link, List, Button} from "@material-ui/core";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import MapboxGeocoder from "mapbox-gl-geocoder";
 import SortIcon from "@material-ui/icons/Sort";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import trafficCameraImage from "../data/trafficCameraPin.png";
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: '#0e1111',
     },
     sidebarTitle: {
-        flexGrow: '1',
+        fontSize:'3.5vw',
         fontFamily: 'Nunito',
         color: '#fff',
         alignItems: 'center',
@@ -84,7 +85,8 @@ const CustomColorCheckbox = withStyles({
       color: "#fff",
       "&$checked": {
         color: "#000080"
-      }
+      },
+      fontSize: '3vw',
     },
     checked: {}
   })((props) => <Checkbox color="default" {...props} />);
@@ -100,7 +102,7 @@ export default function Map() {
     const [map, setMap] = useState(null);
     const [lng, setLng] = useState(-122.79937513172185); // longitude for center of map (Surrey)
     const [lat, setLat] = useState(49.02601641506996);   // Latitude for center of map (Surrey)
-    const [zoom] = useState(9);
+    const [zoom, setZoom] = useState(9);
 
     // Whether to show side drawer or not
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -250,16 +252,16 @@ export default function Map() {
             }
             
             // Get any health reports for this restaurant by matching 'TRACHINGNUMBER' property
-            let reports = ""
+            let reports = []
             for(let i = 0; i < healthReports.length; i++) {
                 if(healthReports[i].TRACKINGNUMBER == e.features[0].properties.TRACKINGNUMBER)
-                    reports += ("Date: " + healthReports[i].INSPECTIONDATE.slice(0,4) + "/" + healthReports[i].INSPECTIONDATE.slice(4,6) + "/" + healthReports[i].INSPECTIONDATE.slice(6) + " Rating: " + healthReports[i].HAZARDRATING + " Comments: " + healthReports[i].VIOLLUMP + "\n\n")
+                    reports.push("Date: " + healthReports[i].INSPECTIONDATE.slice(0,4) + "/" + healthReports[i].INSPECTIONDATE.slice(4,6) + "/" + healthReports[i].INSPECTIONDATE.slice(6) + " Rating: " + healthReports[i].HAZARDRATING + " Comments: " + healthReports[i].VIOLLUMP + "\n\n")
             }
             new mapboxgl.Popup()
                 .setLngLat(coordinates)
                 .setHTML('<h3>' + e.features[0].properties.NAME + ' - ' + e.features[0].properties.PHYSICALADDRESS + '</h3>' +
-                         '<h4> Fraser Health Inspections:' +
-                         '<div>' + reports + '</div>')
+                         '<h4> Fraser Health Inspections:'
+                        )
                 .addTo(map);
         });
 
@@ -307,7 +309,80 @@ export default function Map() {
               map.setLayoutProperty('speedControlLayer', 'visibility', 'visible')
           }
 
-      })
+        })
+
+        // Listen for zoom to newton button and then set center of map to middle of locatin and zoom in
+        document.querySelector('#newton').addEventListener('click', () => {
+          map.flyTo({
+            center: [-122.842033,49.133089],
+            essential: true,
+            zoom: 15
+          })
+          setLat(49.133089)
+          setLng(-122.842033)
+          setZoom(15)
+        })
+
+        // Listen for zoom to city Center button and then set center of map to middle of locatin and zoom in
+        document.querySelector('#cityCenter').addEventListener('click', () => {
+          map.flyTo({
+            center: [-122.848638,49.187152],
+            essential: true,
+            zoom: 15
+          })
+          setLat(49.187152)
+          setLng(-122.848638)
+          setZoom(15)
+        })
+
+        // Listen for zoom to cloverdale button and then set center of map to middle of locatin and zoom in
+        document.querySelector('#cloverdale').addEventListener('click', () => {
+          map.flyTo({
+            center: [-122.756602,49.118997],
+            essential: true,
+            zoom: 15
+          })
+          setLat(49.118997)
+          setLng(-122.756602)
+          setZoom(15)
+        })
+
+        // Listen for zoom to fleetwood button and then set center of map to middle of locatin and zoom in
+        document.querySelector('#fleetwood').addEventListener('click', () => {
+          map.flyTo({
+            center: [ -122.795919,49.164251],
+            essential: true,
+            zoom: 15
+          })
+          setLat(49.164251)
+          setLng(-122.795919)
+          setZoom(15)
+        })
+
+        // Listen for zoom to guildford button and then set center of map to middle of locatin and zoom in
+        document.querySelector('#guildford').addEventListener('click', () => {
+          map.flyTo({
+            center: [-122.803717,49.188604],
+            essential: true,
+            zoom: 15
+          })
+          setLat(49.188604)
+          setLng(-122.803717)
+          setZoom(15)
+        })
+
+         // Listen for zoom to south surrey button and then set center of map to middle of locatin and zoom in
+         document.querySelector('#southSurrey').addEventListener('click', () => {
+          map.flyTo({
+            center: [-122.800765,49.061092],
+            essential: true,
+            zoom: 15
+          })
+          setLat(49.061092)
+          setLng(-122.800765)
+          setZoom(15)
+        })
+
     });
 
     //HTML
@@ -315,6 +390,7 @@ export default function Map() {
         <div className={classes.root}>
             <div className={classes.map}  ref={mapContainer} >
             </div>
+            
             <div className={classes.sideBar}>
                 <h1 className={classes.sidebarTitle}> 
                     <IconButton>
@@ -328,10 +404,17 @@ export default function Map() {
                     <FormControlLabel control={<CustomColorCheckbox id="traffic-toggle" defaultChecked />} label="Traffic Cameras" className={classes.checkBox}/> 
                     <FormControlLabel control={<CustomColorCheckbox id="restaurant-toggle" />} label="Restaurant & Health Reports" className={classes.checkBox}/> 
                     <FormControlLabel control={<CustomColorCheckbox id="speedControl-toggle" />} label="Speed Bumps/Traffic Circles" className={classes.checkBox}/> 
-
                 </FormGroup>
                 </div>
-                
+                <h2 className={classes.settings}>Zoom To</h2>
+                <ButtonGroup orientation="vertical" aria-label="vertical contained button group" variant="contained" color="primary"> 
+                    <Button id="cityCenter">City Center</Button>
+                    <Button id="cloverdale">Cloverdale</Button>
+                    <Button id="fleetwood">Fleetwood</Button>
+                    <Button id="guildford">Guildford</Button>
+                    <Button id="newton">Newton</Button>
+                    <Button id="southSurrey">South Surrey</Button>
+                </ButtonGroup>
             </div>
             <SwipeableDrawer
                 classes={{ paper: classes.paper }}
