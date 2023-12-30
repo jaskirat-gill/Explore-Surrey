@@ -3,38 +3,39 @@ import { Collapse, CssBaseline, makeStyles } from "@material-ui/core";
 import NavBar from "../components/NavBar";
 import ImageCard from "../components/ImageCard";
 import readMoreCards from "../static/readMoreCards";
+import styles from "./ReadMore.modules.css";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        minHeight: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
-        backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/bg.jpg'})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-    },
-    card: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
-    },
-    scrollBar: {
-        overflowY:'scroll',
-        maxHeight: '100vh'
-    }
-}));
+// const useStyles = makeStyles((theme) => ({
+//     root: {
+//         minHeight: '100vh',
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignContent: 'center',
+//         backgroundImage: `url(../assets/bg.jpg'})`,
+//         backgroundRepeat: 'no-repeat',
+//         backgroundSize: 'cover',
+//     },
+//     card: {
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignContent: 'center',
+//     },
+//     scrollBar: {
+//         overflowY:'scroll',
+//         maxHeight: '100vh'
+//     }
+// }));
 export default function ReadMore() {
-    const classes = useStyles();
+    // const classes = useStyles();
     const [checked, setChecked] = useState(false);
     useEffect(()=>{
         setChecked(true);
     },[])
     return (
-        <div className={classes.root}>
+        <div className={styles.root}>
             <CssBaseline />
             <NavBar />
-            <Collapse className={classes.scrollBar} in={checked} {...(checked ? { timeout: 1000 } : {})} collapsedHeight={50}>
+            <Collapse className={styles.scrollBar} in={checked} {...(checked ? { timeout: 1000 } : {})} collapsedHeight={50}>
                 <ImageCard infoCard={readMoreCards[0]}/>
                 <ImageCard infoCard={readMoreCards[1]}/>
                 <ImageCard infoCard={readMoreCards[2]}/>

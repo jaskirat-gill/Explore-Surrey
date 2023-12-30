@@ -1,0 +1,22 @@
+.root {
+    min-height: 100vh;
+    background-image: url("../assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Nunito;
+    width: 100%;    
+}
+.main {
+    flex-grow: 1;
+    text-align: center;
+    color: #000080;
+    font-size: 4rem;
+}
+.white {
+    color: #fff;
+    font-size: 4rem;
+}

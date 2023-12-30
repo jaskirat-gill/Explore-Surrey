@@ -1,0 +1,47 @@
+
+.root {
+    background-color: #0e1111 !important;
+    position: absolute;
+    width: 25%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+.sidebarTitle {
+    font-size: 2.5vw;
+    font-family: Nunito;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+
+}
+.colorText {
+    color: #000080;
+}
+.settings {
+    font-size: 2vw;
+    color: #fff;
+    font-family: Nunito;
+    color: #fff;
+    margin-left: 10%;
+  }
+.checkBox {
+    font-size: 2vw!important;
+    color: #fff;
+    margin-left: 10%;
+}
+.labelText {
+    color: #fff;
+}
+.margin {
+    margin-left: 10%;
+}
+.customButton {
+    padding: 1;
+    margin: 2;
+}

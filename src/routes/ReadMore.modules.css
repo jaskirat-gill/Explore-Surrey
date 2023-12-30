@@ -1,0 +1,17 @@
+.root {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-image: url("../assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.scrollBar {
+    overflow-y: scroll;
+}
