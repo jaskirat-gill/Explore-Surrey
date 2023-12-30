@@ -5,7 +5,6 @@ Explore Surrey is a one stop site to visually view data from Surrey's Open Data 
 Current Features:
 - Live Traffic Camera Stills
 - Restaurants
-- Fraser Health Restaurant Inspection Results
 - Speed Control Measures (Speed Bumps, Traffic Circles, Raised Crossings)
 
 Planned Features:
